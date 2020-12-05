@@ -9,4 +9,8 @@ public class WordInfo {
     private String [] synonyms;
 
     private String [] examples;
+
+
 }
+
+

@@ -1,14 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.svg.SVGGlyph?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="Controllers.SearchForWordViewController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.SearchForWordViewController">
+   <children>
+      <SVGGlyph prefHeight="400.0" prefWidth="600.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0" startX="0.17266187050359713" startY="0.23980815347721823">
+               <stops>
+                  <Stop color="#537977" />
+                  <Stop color="#384c4d" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill>
+      </SVGGlyph>
+      <Label id="titleLabel" layoutX="251.0" layoutY="31.0" text="Dictionary" />
+      <Label id="actionLabel" layoutX="100.0" layoutY="107.0" text="Enter a word:" />
+      <JFXTextField fx:id="wordInputTextField" layoutX="220.0" layoutY="106.0" unFocusColor="#c9c9c9" />
+      <JFXListView fx:id="wordListView" layoutX="51.0" layoutY="174.0" prefHeight="195.0" prefWidth="491.0" />
+      <JFXButton buttonType="RAISED" layoutX="404.0" layoutY="99.0" text="Search">
+         <ripplerFill>
+            <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+               <stops>
+                  <Stop color="BLACK" />
+                  <Stop color="WHITE" offset="1.0" />
+               </stops>
+            </RadialGradient>
+         </ripplerFill>
+      </JFXButton>
+      <Label fx:id="rowsReturnedLabel" layoutX="54.0" layoutY="156.0" text="Definitions:" />
+   </children>
 </AnchorPane>

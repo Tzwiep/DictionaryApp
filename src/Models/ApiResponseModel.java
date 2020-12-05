@@ -2,7 +2,9 @@ package Models;
 
 public class ApiResponseModel {
 
-    private WordInfo [] words;
+    private String word;
+
+    private WordInfo [] results;
 
 
 

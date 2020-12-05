@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
+
+.root {
+
+    -fx-background-color:#385057 ;
+
+}
+.label{
+    -fx-text-fill: #f9e6bf;
+
+}
+
+#titleLabel{
+    -fx-font-size: 24px;
+    -fx-text-fill: #f9e6bf;
+   -fx-font-family: 'Playfair Display', serif;
+}
+#actionLabel{
+    -fx-font-size: 16px;
+    -fx-text-fill: #f9e6bf;
+    -fx-font-family: 'Playfair Display', serif;
+}
+
+.button{
+    -fx-background-color: #486770;
+    -fx-text-fill: #ffedce;
+    -fx-background-radius: 8;
+    -fx-padding: 10 15 10 15;
+    -fx-min-width: 110;
+    -fx-min-height: 30;
+    -fx-font-size: 16px;
+    -fx-font-family: 'Roboto';
+
+}
+.button:hover{
+    -fx-background-color:#486857;
+    -fx-text-fill: #ffedce;
+    -fx-background-radius: 8;
+}
