@@ -1,22 +1,19 @@
-import Utilities.WordsApiUtility;
+/**
+ *  Tyler Zwiep
+ *  200428335
+ */
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
-import java.net.URL;
-import java.util.Scanner;
 
 public class Main extends Application {
     public static void main(String[] args) {
 
-        WordsApiUtility.getWordFromApi("top");
-   //launch(args);
+        launch(args);
     }
 
     @Override
@@ -24,6 +21,8 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("Views/searchForWordView.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
+        stage.setTitle("Dictionary");
+        stage.getIcons().add(new Image("Icons/dictionary.png"));
         stage.show();
     }
 }

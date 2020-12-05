@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="Controllers.WordDetailViewController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.WordDetailViewController">
+   <children>
+      <Label layoutX="93.0" layoutY="81.0" text="Part of Speech:" />
+      <Label layoutX="121.0" layoutY="127.0" text="Definition:" />
+      <Label layoutX="123.0" layoutY="221.0" text="Example:" />
+      <Label layoutX="113.0" layoutY="175.0" text="Synonyms:" />
+      <Label fx:id="partOfSpeechLabel" layoutX="225.0" layoutY="81.0" prefHeight="17.0" prefWidth="360.0" />
+      <Label fx:id="definitionLabel" layoutX="202.0" layoutY="127.0" prefHeight="17.0" prefWidth="380.0" />
+      <Label fx:id="synonymsLabel" layoutX="210.0" layoutY="175.0" prefHeight="17.0" prefWidth="370.0" />
+      <Label fx:id="exampleLabel" layoutX="195.0" layoutY="221.0" prefHeight="17.0" prefWidth="380.0" />
+      <Label id="wordSelectedLabel" fx:id="titleWordLabel" layoutX="285.0" layoutY="42.0" />
+      <JFXButton buttonType="RAISED" layoutX="245.0" layoutY="321.0" onAction="#goBack" ripplerFill="#92bcad" text="Back" />
+   </children>
 </AnchorPane>

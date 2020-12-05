@@ -1,3 +1,7 @@
+/**
+ *  Tyler Zwiep
+ *  200428335
+ */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
@@ -9,6 +13,8 @@
 }
 .label{
     -fx-text-fill: #f9e6bf;
+    -fx-font-size: 14px;
+    -fx-font-family: 'Roboto';
 
 }
 
@@ -17,12 +23,35 @@
     -fx-text-fill: #f9e6bf;
    -fx-font-family: 'Playfair Display', serif;
 }
+
 #actionLabel{
     -fx-font-size: 16px;
     -fx-text-fill: #f9e6bf;
     -fx-font-family: 'Playfair Display', serif;
 }
 
+.jfx-text-field {
+    -fx-prompt-text-fill: #f9e6bf;
+   -fx-text-fill: #f9e6bf;
+    -jfx-focus-color: #f9e6bf;
+    -fx-font-family: 'Playfair Display', serif;
+    -fx-font-size: 16px;
+
+}
+
+/* ------------------------------ JFX List Style ------------------------- */
+.jfx-list-cell:hover{
+    -fx-background-color: #9FF9E6;
+}
+.jfx-list-cell{
+
+}
+
+.jfx-list-view{
+
+}
+
+/* ------------------------------ Button Style ------------------------- */
 .button{
     -fx-background-color: #486770;
     -fx-text-fill: #ffedce;
@@ -38,4 +67,12 @@
     -fx-background-color:#486857;
     -fx-text-fill: #ffedce;
     -fx-background-radius: 8;
+}
+
+
+
+#wordSelectedLabel{
+    -fx-font-size: 24px;
+    -fx-text-fill: #f9e6bf;
+    -fx-font-family: 'Playfair Display', serif;
 }
