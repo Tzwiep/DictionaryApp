@@ -2,20 +2,24 @@ package Controllers;
 
 import Models.ApiResponseModel;
 import Models.WordInfo;
+import Utilities.JsonFileUtility;
+import Utilities.WordsApiUtility;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.ResourceBundle;
 
 public class WordDetailViewController implements Initializable {
@@ -27,7 +31,7 @@ public class WordDetailViewController implements Initializable {
     private Label definitionLabel;
 
     @FXML
-    private Label synonymsLabel;
+    private Label synonymsTitleLabel;
 
     @FXML
     private Label exampleLabel;
@@ -35,21 +39,67 @@ public class WordDetailViewController implements Initializable {
     @FXML
     private Label titleWordLabel;
 
+    @FXML
+    private Label pronunciationLabel;
+
+    @FXML
+    private HBox synHBox;
+
+    @FXML
+    private HBox exampleHBox;
+
+    private ApiResponseModel response;
+
 
     public void initWordDetails(WordInfo selectedWord){
-        titleWordLabel.setText(SearchForWordViewController.getWordName().toUpperCase());
+        File jsonFile = new File("src/Utilities/words.json");
+        response = JsonFileUtility.getApiInfoFromJson(jsonFile);
+
+        titleWordLabel.setText(response.getWord().toUpperCase());
+        pronunciationLabel.setText(response.getPronunciation().toString());
         partOfSpeechLabel.setText(selectedWord.getPartOfSpeech());
         definitionLabel.setText(selectedWord.getDefinition());
-        if(selectedWord.getSynonyms().length == 0)
-            synonymsLabel.setText(" No synonyms available for this word");
-        else
-            synonymsLabel.setText(Arrays.toString(selectedWord.getSynonyms()));
 
-        if(selectedWord.getExamples().length == 0)
-            exampleLabel.setText("No examples available for this word");
-        else
-            exampleLabel.setText(Arrays.toString(selectedWord.getExamples()));
+        // StringBuilder for the array of Synonyms - Change first letter in each word to capital and add comma between.
+        StringBuilder sbSynonyms = new StringBuilder();
+        if(selectedWord.getSynonyms() != null) {
+            for (String syn : selectedWord.getSynonyms()) {
+                syn = Character.toUpperCase(syn.charAt(0)) + syn.substring(1);
+                Hyperlink link = new Hyperlink(syn);
+                String finalSyn = syn.replace(" ","%20");;
+                link.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        WordsApiUtility.getWordFromApi(finalSyn);
+                        try {
+                            goBack(event);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+                synHBox.getChildren().add(link);
+            }
+        } else
+            synonymsTitleLabel.setText("");
+
+
+        if(selectedWord.getExamples() != null) {
+            // StringBuilder for the array of Examples
+            StringBuilder sbExamples = new StringBuilder();
+            for (String ex : selectedWord.getExamples()) {
+                sbExamples.append("'" + Character.toUpperCase(ex.charAt(0)) + ex.substring(1) + "'\n" + "\n");
+            }
+            exampleLabel.setText(String.valueOf(sbExamples));
+        } else
+            exampleHBox.setVisible(false);
+
+
     }
+    private void reloadDetails(String word){
+
+    }
+
     @FXML
     private void goBack(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();

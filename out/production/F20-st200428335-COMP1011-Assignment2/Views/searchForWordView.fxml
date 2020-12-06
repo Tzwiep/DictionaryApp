@@ -3,34 +3,42 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXListView?>
 <?import com.jfoenix.controls.JFXTextField?>
-<?import com.jfoenix.svg.SVGGlyph?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.paint.LinearGradient?>
-<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.SearchForWordViewController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.SearchForWordViewController">
    <children>
-      <SVGGlyph prefHeight="400.0" prefWidth="600.0">
-         <fill>
-            <LinearGradient endX="1.0" endY="1.0" startX="0.17266187050359713" startY="0.23980815347721823">
-               <stops>
-                  <Stop color="#537977" />
-                  <Stop color="#384c4d" offset="1.0" />
-               </stops>
-            </LinearGradient>
-         </fill>
-      </SVGGlyph>
-      <Label id="titleLabel" layoutX="251.0" layoutY="31.0" text="Dictionary" />
-      <Label id="actionLabel" layoutX="100.0" layoutY="107.0" text="Enter a word:" />
-      <JFXTextField fx:id="wordInputTextField" layoutX="220.0" layoutY="106.0" unFocusColor="#c9c9c9" />
-      <JFXListView fx:id="wordListView" depth="1" layoutX="51.0" layoutY="174.0" onMouseClicked="#changeToSelectedWord" prefHeight="195.0" prefWidth="491.0" verticalGap="5.0">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </JFXListView>
-      <JFXButton buttonType="RAISED" layoutX="404.0" layoutY="99.0" onAction="#searchWord" ripplerFill="#7da18f" text="Search" />
-      <Label fx:id="rowsReturnedLabel" layoutX="54.0" layoutY="156.0" text="Definitions:" />
+      <VBox alignment="CENTER" layoutX="-1.0" layoutY="29.0" prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label id="titleLabel" contentDisplay="CENTER" text="Dictionary">
+               <VBox.margin>
+                  <Insets bottom="40.0" />
+               </VBox.margin>
+            </Label>
+            <HBox alignment="CENTER" prefHeight="40.0" prefWidth="800.0" spacing="30.0">
+               <children>
+                  <JFXTextField fx:id="wordInputTextField" labelFloat="true" prefHeight="36.0" prefWidth="242.0" promptText="Enter Word" unFocusColor="#c9c9c9" />
+                  <JFXButton buttonType="RAISED" onAction="#searchWord" ripplerFill="#7da18f" text="Search" />
+               </children>
+            </HBox>
+            <JFXListView fx:id="wordListView" depth="1" maxHeight="400.0" maxWidth="700.0" onMouseClicked="#changeToSelectedWord" prefHeight="400.0" prefWidth="700.0" verticalGap="5.0">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </JFXListView>
+            <Label fx:id="rowsReturnedLabel" alignment="CENTER" text="Definitions:">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Label>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>

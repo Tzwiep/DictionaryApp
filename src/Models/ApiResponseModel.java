@@ -6,13 +6,14 @@ package Models;
 
 public class ApiResponseModel {
 
-    private static String word;
+    private String word;
 
     private WordInfo [] results;
 
+    private Pronunciation pronunciation;
 
 
-    public static String getWord() {
+    public String getWord() {
         return word;
     }
 
@@ -26,5 +27,13 @@ public class ApiResponseModel {
 
     public void setResults(WordInfo[] results) {
         this.results = results;
+    }
+
+    public Pronunciation getPronunciation() {
+        return pronunciation;
+    }
+
+    public void setPronunciation(Pronunciation pronunciation) {
+        this.pronunciation = pronunciation;
     }
 }
