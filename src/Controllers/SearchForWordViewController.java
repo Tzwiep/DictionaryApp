@@ -10,7 +10,6 @@ import Utilities.JsonFileUtility;
 import Utilities.WordsApiUtility;
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTextField;
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -31,6 +30,8 @@ import java.util.ResourceBundle;
 public class SearchForWordViewController implements Initializable {
 
     @FXML
+    private Label errMessageLabel;
+    @FXML
     private JFXListView<WordInfo> wordListView;
 
     @FXML
@@ -46,9 +47,6 @@ public class SearchForWordViewController implements Initializable {
 
     private static String wordName;
 
-    private static String getWordName(){
-        return wordName;
-    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -79,24 +77,17 @@ public class SearchForWordViewController implements Initializable {
     private void searchWord()
     {
         String searchText = wordInputTextField.getText();
-        if(searchText.isEmpty()) {
-            wordInputTextField.setUnFocusColor(Color.RED);
-            wordInputTextField.setPromptText("Please enter a word to search");
-        }
 
         searchText = searchText.trim();
-        searchText = searchText.replace(" ","%20");
         wordName = searchText;
+        searchText = searchText.replace(" ","%20");
 
         // call the api
         WordsApiUtility.getWordFromApi(searchText);
 
-
         // read the json file and create ApiResponseModel
         File jsonFile = new File("src/Utilities/words.json");
         response = JsonFileUtility.getApiInfoFromJson(jsonFile);
-
-
 
         updateScene();
 
@@ -104,11 +95,21 @@ public class SearchForWordViewController implements Initializable {
 
     private void updateScene()
     {
+        errMessageLabel.setText("");
       wordListView.getItems().clear();
       wordListView.setExpanded(true);
       wordListView.depthProperty().set(1);
+        try{
       wordListView.getItems().addAll(response.getResults());
-      rowsReturnedLabel.setText(wordName.toUpperCase() + " Definitions: " + wordListView.getItems().size());
+        } catch(Exception e){
+            if(!wordInputTextField.getText().isEmpty())
+                errMessageLabel.setText("Sorry, no definitions were found - Please search for a different word");
+            else
+                errMessageLabel.setText("Please enter the word that you want to find the definition of before clicking 'Search'");
+        }
+      rowsReturnedLabel.setText(wordName.toUpperCase() + " definitions: " + wordListView.getItems().size());
+
+
     }
 
     public void reloadScene() {
@@ -122,4 +123,6 @@ public class SearchForWordViewController implements Initializable {
         wordInputTextField.setText(wordName);
         rowsReturnedLabel.setText(wordName.toUpperCase() + " Definitions: " + wordListView.getItems().size());
     }
+
+
 }

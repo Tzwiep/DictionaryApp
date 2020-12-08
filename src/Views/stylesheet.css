@@ -6,7 +6,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@300&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Rokkitt&display=swap');
 
 .root {
 
@@ -32,18 +32,29 @@
     -fx-font-family: 'Roboto';
 }
 
-.jfx-text-field {
-    -fx-prompt-text-fill: #f9e6bf;
-   -fx-text-fill: #f9e6bf;
-    -jfx-focus-color: #f9e6bf;
-    -fx-font-family: 'Playfair Display', serif;
-    -fx-font-size: 16px;
-
+#errMessageLabel{
+    -fx-font-size: 14px;
+    -fx-text-fill: red;
+    -fx-font-family: 'Roboto';
 }
+#synHBox .label{
+    -fx-font-size: 14px;
+    -fx-text-fill: red;
+    -fx-font-family: 'Roboto';
+}
+
+.jfx-text-field {
+    -fx-prompt-text-fill: #D6DAD2;
+   -fx-text-fill: #f9e6bf;
+    -jfx-focus-color: #D6DAD2;
+    -fx-font-family: 'Playfair Display', serif;
+    -fx-font-size: 20px;
+}
+
 
 /* ------------------------------ JFX List Style ------------------------- */
 .jfx-list-cell:hover{
-    -fx-background-color: #9FF9E6;
+    -fx-background-color: #E1F4ED;
 }
 .jfx-list-cell{
     -fx-background-radius: 10px;
@@ -51,23 +62,40 @@
 }
 
 .jfx-list-view{
+    -fx-background-color: #385057;
+    -fx-font-family: 'Rokkitt', serif;
+    -fx-font-size: 14px;
+}
+.scroll-bar:vertical{
     -fx-background-color: transparent;
+    -fx-padding: 5px;
+    -fx-border-insets: 5px;
+    -fx-background-insets: 5px;
+}
+.jfx-list-view .scroll-bar .thumb{
+    -fx-background-color:#678a93;
+}
+.jfx-list-view .scroll-bar .increment-button{
+    -fx-background-color:transparent;
+    -fx-text-fill: red;
+}
+.jfx-list-view .scroll-bar .decrement-button{
+    -fx-background-color:transparent;
 }
 
 /* ------------------------------ Button Style ------------------------- */
 .button{
-    -fx-background-color: #486770;
+    -fx-background-color: #678a93;
     -fx-text-fill: #ffedce;
     -fx-background-radius: 8;
     -fx-padding: 10 15 10 15;
     -fx-min-width: 110;
-    -fx-min-height: 30;
     -fx-font-size: 16px;
     -fx-font-family: 'Roboto';
 
 }
 .button:hover{
-    -fx-background-color:#486857;
+    -fx-background-color: #6e929b;
     -fx-text-fill: #ffedce;
     -fx-background-radius: 8;
 }
@@ -105,4 +133,13 @@
     -fx-font-style: italic;
     -fx-font-family: 'Josefin Slab';
 
+}
+
+.hyperlink{
+    -fx-text-fill: #B4E4D1;
+    -fx-font-size: 16px;
+    -fx-font-family: 'Rokkitt', serif;
+}
+.hyperlink:selected{
+    -fx-text-fill:#B4E4D1;
 }

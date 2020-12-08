@@ -7,14 +7,13 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
 <AnchorPane maxHeight="600.0" maxWidth="800.0" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.WordDetailViewController">
    <children>
       <VBox alignment="CENTER" prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label id="wordSelectedLabel" fx:id="titleWordLabel" alignment="CENTER" contentDisplay="CENTER">
                <VBox.margin>
-                  <Insets top="20.0" />
+                  <Insets top="40.0" />
                </VBox.margin>
             </Label>
             <Label fx:id="pronunciationLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="410.0" layoutY="61.0" />
@@ -25,10 +24,10 @@
             </Label>
             <VBox alignment="CENTER" spacing="30.0">
                <children>
-                  <HBox spacing="20.0">
+                  <HBox fx:id="synHBoxWLabel" spacing="20.0">
                      <children>
                         <Label id="detailTitleLabel" fx:id="synonymsTitleLabel" alignment="CENTER_RIGHT" prefHeight="22.0" prefWidth="150.0" text="Synonyms:" />
-                        <HBox fx:id="synHBox" prefHeight="25.0" prefWidth="590.0" />
+                        <HBox fx:id="synHBox" alignment="CENTER_LEFT" prefHeight="25.0" prefWidth="590.0" />
                      </children>
                   </HBox>
                   <HBox spacing="20.0">
@@ -39,8 +38,11 @@
                   </HBox>
                   <HBox fx:id="exampleHBox" spacing="20.0">
                      <children>
-                        <Label id="detailTitleLabel" alignment="CENTER_RIGHT" prefHeight="22.0" prefWidth="150.0" text="Example:" />
-                        <Label id="exampleLabel" fx:id="exampleLabel" alignment="TOP_LEFT" prefHeight="141.0" prefWidth="590.0" wrapText="true" />
+                        <Label id="detailTitleLabel" alignment="TOP_RIGHT" prefHeight="22.0" prefWidth="150.0" text="Example Usage:" />
+                        <Label id="exampleLabel" fx:id="exampleLabel" alignment="TOP_LEFT" prefHeight="141.0" prefWidth="590.0" wrapText="true">
+                           <padding>
+                              <Insets top="1.0" />
+                           </padding></Label>
                      </children>
                   </HBox>
                </children>

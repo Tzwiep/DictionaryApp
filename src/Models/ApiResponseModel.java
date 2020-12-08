@@ -12,13 +12,21 @@ public class ApiResponseModel {
 
     private Pronunciation pronunciation;
 
+    public ApiResponseModel(String word, WordInfo[] results, Pronunciation pronunciation) {
+        setWord(word);
+        setResults(results);
+        setPronunciation(pronunciation);
+    }
 
     public String getWord() {
         return word;
     }
 
     public void setWord(String word) {
-        this.word = word;
+        if(word.matches("[A-Za-z'-]+"))
+            this.word = word;
+        else
+            throw new IllegalArgumentException("Valid dictionary words don't contain numbers or special characters");
     }
 
     public WordInfo[] getResults() {
@@ -34,6 +42,7 @@ public class ApiResponseModel {
     }
 
     public void setPronunciation(Pronunciation pronunciation) {
-        this.pronunciation = pronunciation;
+            this.pronunciation = pronunciation;
+
     }
 }

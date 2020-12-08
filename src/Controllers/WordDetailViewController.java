@@ -15,6 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -46,6 +47,9 @@ public class WordDetailViewController implements Initializable {
     private HBox synHBox;
 
     @FXML
+    private HBox synHBoxWLabel;
+
+    @FXML
     private HBox exampleHBox;
 
     private ApiResponseModel response;
@@ -56,7 +60,10 @@ public class WordDetailViewController implements Initializable {
         response = JsonFileUtility.getApiInfoFromJson(jsonFile);
 
         titleWordLabel.setText(response.getWord().toUpperCase());
-        pronunciationLabel.setText(response.getPronunciation().toString());
+        if(response.getPronunciation() != null)
+            pronunciationLabel.setText(response.getPronunciation().toString());
+        else
+            pronunciationLabel.setText("");
         partOfSpeechLabel.setText(selectedWord.getPartOfSpeech());
         definitionLabel.setText(selectedWord.getDefinition());
 
@@ -73,15 +80,18 @@ public class WordDetailViewController implements Initializable {
                         WordsApiUtility.getWordFromApi(finalSyn);
                         try {
                             goBack(event);
-                        } catch (IOException e) {
+                        } catch (Exception e) {
                             e.printStackTrace();
+                          Label error = new Label(" Word not found - Try another word");
+                          synHBox.getChildren().add(error);
                         }
                     }
                 });
                 synHBox.getChildren().add(link);
             }
-        } else
-            synonymsTitleLabel.setText("");
+        } else {
+            synHBoxWLabel.setVisible(false);
+        }
 
 
         if(selectedWord.getExamples() != null) {
@@ -93,10 +103,6 @@ public class WordDetailViewController implements Initializable {
             exampleLabel.setText(String.valueOf(sbExamples));
         } else
             exampleHBox.setVisible(false);
-
-
-    }
-    private void reloadDetails(String word){
 
     }
 
