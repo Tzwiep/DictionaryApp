@@ -1,7 +1,8 @@
 /**
- *  Tyler Zwiep
- *  200428335
+ * Tyler Zwiep
+ * 200428335
  */
+
 import Models.WordInfo;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

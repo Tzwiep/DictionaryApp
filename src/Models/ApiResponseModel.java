@@ -1,6 +1,6 @@
 /**
- *  Tyler Zwiep
- *  200428335
+ * Tyler Zwiep
+ * 200428335
  */
 package Models;
 
@@ -8,7 +8,7 @@ public class ApiResponseModel {
 
     private String word;
 
-    private WordInfo [] results;
+    private WordInfo[] results;
 
     private Pronunciation pronunciation;
 
@@ -22,8 +22,11 @@ public class ApiResponseModel {
         return word;
     }
 
+    /**
+     *   this method checks that the word consists only of letters and a few special characters
+     */
     public void setWord(String word) {
-        if(word.matches("[A-Za-z'-]+"))
+        if (word.matches("[A-Za-z'-]+"))
             this.word = word;
         else
             throw new IllegalArgumentException("Valid dictionary words don't contain numbers or special characters");
@@ -42,7 +45,7 @@ public class ApiResponseModel {
     }
 
     public void setPronunciation(Pronunciation pronunciation) {
-            this.pronunciation = pronunciation;
+        this.pronunciation = pronunciation;
 
     }
 }

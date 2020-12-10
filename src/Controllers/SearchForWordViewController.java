@@ -1,6 +1,6 @@
 /**
- *  Tyler Zwiep
- *  200428335
+ * Tyler Zwiep
+ * 200428335
  */
 package Controllers;
 
@@ -18,7 +18,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -52,8 +51,10 @@ public class SearchForWordViewController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         rowsReturnedLabel.setText("");
 
-        wordListView.getSelectionModel().selectedItemProperty().addListener((observableValue, oldWord, newWord) ->{
-               wordSelected = newWord;
+        wordListView.getSelectionModel().selectedItemProperty().addListener((observableValue, oldWord, newWord) -> {
+
+                wordSelected = newWord;
+
         });
     }
 
@@ -67,6 +68,7 @@ public class SearchForWordViewController implements Initializable {
         WordDetailViewController controller = loader.getController();
         controller.initWordDetails(wordSelected);
 
+
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(wordDetailViewScene);
         window.setTitle("Word Details");
@@ -74,13 +76,12 @@ public class SearchForWordViewController implements Initializable {
 
 
     @FXML
-    private void searchWord()
-    {
+    private void searchWord() {
         String searchText = wordInputTextField.getText();
 
         searchText = searchText.trim();
         wordName = searchText;
-        searchText = searchText.replace(" ","%20");
+        searchText = searchText.replace(" ", "%20");
 
         // call the api
         WordsApiUtility.getWordFromApi(searchText);
@@ -93,21 +94,20 @@ public class SearchForWordViewController implements Initializable {
 
     }
 
-    private void updateScene()
-    {
+    private void updateScene() {
         errMessageLabel.setText("");
-      wordListView.getItems().clear();
-      wordListView.setExpanded(true);
-      wordListView.depthProperty().set(1);
-        try{
-      wordListView.getItems().addAll(response.getResults());
-        } catch(Exception e){
-            if(!wordInputTextField.getText().isEmpty())
+        wordListView.getItems().clear();
+        wordListView.setExpanded(true);
+        wordListView.depthProperty().set(1);
+        try {
+            wordListView.getItems().addAll(response.getResults());
+        } catch (Exception e) {
+            if (!wordInputTextField.getText().isEmpty())
                 errMessageLabel.setText("Sorry, no definitions were found - Please search for a different word");
             else
                 errMessageLabel.setText("Please enter the word that you want to find the definition of before clicking 'Search'");
         }
-      rowsReturnedLabel.setText(wordName.toUpperCase() + " definitions: " + wordListView.getItems().size());
+        rowsReturnedLabel.setText(wordName.toUpperCase() + " definitions: " + wordListView.getItems().size());
 
 
     }
@@ -119,7 +119,7 @@ public class SearchForWordViewController implements Initializable {
         wordListView.setExpanded(true);
         wordListView.depthProperty().set(1);
         wordListView.getItems().addAll(response.getResults());
-        wordName =response.getWord();
+        wordName = response.getWord();
         wordInputTextField.setText(wordName);
         rowsReturnedLabel.setText(wordName.toUpperCase() + " Definitions: " + wordListView.getItems().size());
     }

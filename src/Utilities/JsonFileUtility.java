@@ -1,6 +1,6 @@
 /**
- *  Tyler Zwiep
- *  200428335
+ * Tyler Zwiep
+ * 200428335
  */
 package Utilities;
 
@@ -13,21 +13,17 @@ import java.io.FileReader;
 
 public class JsonFileUtility {
 
-    public static ApiResponseModel getApiInfoFromJson(File jsonFile)
-    {
+    public static ApiResponseModel getApiInfoFromJson(File jsonFile) {
         ApiResponseModel apiResponse = null;
 
         // try with resources - this will auto-close objects that have a close method
-        try(
+        try (
                 FileReader fileReader = new FileReader(jsonFile);
                 JsonReader jsonReader = new JsonReader(fileReader);
-        )
-        {
+        ) {
             Gson gson = new Gson();
             apiResponse = gson.fromJson(jsonReader, ApiResponseModel.class);
-        }
-        catch(Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 

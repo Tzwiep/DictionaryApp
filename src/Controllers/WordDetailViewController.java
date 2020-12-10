@@ -1,3 +1,7 @@
+/**
+ * Tyler Zwiep
+ * 200428335
+ */
 package Controllers;
 
 import Models.ApiResponseModel;
@@ -15,7 +19,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -31,8 +34,6 @@ public class WordDetailViewController implements Initializable {
     @FXML
     private Label definitionLabel;
 
-    @FXML
-    private Label synonymsTitleLabel;
 
     @FXML
     private Label exampleLabel;
@@ -55,25 +56,36 @@ public class WordDetailViewController implements Initializable {
     private ApiResponseModel response;
 
 
-    public void initWordDetails(WordInfo selectedWord){
+    /**
+     * This method is called from the SearchForWord controller and it is responsible for initializing the WordDetails view
+     * with the the details of the selected word from the listView.
+     * @param selectedWord
+     */
+    public void initWordDetails(WordInfo selectedWord) {
         File jsonFile = new File("src/Utilities/words.json");
         response = JsonFileUtility.getApiInfoFromJson(jsonFile);
-
+        // set the title to display the selected word
         titleWordLabel.setText(response.getWord().toUpperCase());
-        if(response.getPronunciation() != null)
+
+        // if response contains a pronunciation... set the label
+        if (response.getPronunciation() != null)
             pronunciationLabel.setText(response.getPronunciation().toString());
         else
             pronunciationLabel.setText("");
+
+        // set other labels
         partOfSpeechLabel.setText(selectedWord.getPartOfSpeech());
         definitionLabel.setText(selectedWord.getDefinition());
 
         // StringBuilder for the array of Synonyms - Change first letter in each word to capital and add comma between.
         StringBuilder sbSynonyms = new StringBuilder();
-        if(selectedWord.getSynonyms() != null) {
+        if (selectedWord.getSynonyms() != null) {
             for (String syn : selectedWord.getSynonyms()) {
                 syn = Character.toUpperCase(syn.charAt(0)) + syn.substring(1);
                 Hyperlink link = new Hyperlink(syn);
-                String finalSyn = syn.replace(" ","%20");;
+                String finalSyn = syn.replace(" ", "%20");
+
+                // add an ActionEvent to the new synonym hyperlinks that will search the selected word and return to the searchWord view
                 link.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
@@ -82,30 +94,40 @@ public class WordDetailViewController implements Initializable {
                             goBack(event);
                         } catch (Exception e) {
                             e.printStackTrace();
-                          Label error = new Label(" Word not found - Try another word");
-                          synHBox.getChildren().add(error);
+                            Label error = new Label(" Word not found - Try another word");
+                            synHBox.getChildren().add(error);
                         }
                     }
                 });
+                // add the new hyperlink synonym to it's HBox for display
                 synHBox.getChildren().add(link);
             }
         } else {
+            // hide the Synonyms field if none available
             synHBoxWLabel.setVisible(false);
         }
 
-
-        if(selectedWord.getExamples() != null) {
-            // StringBuilder for the array of Examples
+        // check if word contains usage examples
+        if (selectedWord.getExamples() != null) {
+            // StringBuilder for the array of usage examples
             StringBuilder sbExamples = new StringBuilder();
             for (String ex : selectedWord.getExamples()) {
+                // add brackets to demonstrate it as a sentence
                 sbExamples.append("'" + Character.toUpperCase(ex.charAt(0)) + ex.substring(1) + "'\n" + "\n");
             }
+            // set example label with array of formatted string examples
             exampleLabel.setText(String.valueOf(sbExamples));
         } else
+            // hide example usage label if none available
             exampleHBox.setVisible(false);
 
     }
 
+    /**
+     * This method calls the reloadScene() method in SearchForWord Controller and loads the searchWord view
+     * @param event
+     * @throws IOException
+     */
     @FXML
     private void goBack(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();

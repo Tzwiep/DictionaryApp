@@ -26,20 +26,23 @@
                <children>
                   <HBox fx:id="synHBoxWLabel" spacing="20.0">
                      <children>
-                        <Label id="detailTitleLabel" fx:id="synonymsTitleLabel" alignment="CENTER_RIGHT" prefHeight="22.0" prefWidth="150.0" text="Synonyms:" />
-                        <HBox fx:id="synHBox" alignment="CENTER_LEFT" prefHeight="25.0" prefWidth="590.0" />
+                        <Label id="detailTitleLabel" fx:id="synonymsTitleLabel" alignment="BOTTOM_RIGHT" prefHeight="22.0" prefWidth="150.0" text="Synonyms:">
+                           <padding>
+                              <Insets top="3.0" />
+                           </padding></Label>
+                        <HBox fx:id="synHBox" prefHeight="25.0" prefWidth="590.0" />
                      </children>
                   </HBox>
                   <HBox spacing="20.0">
                      <children>
                         <Label id="detailTitleLabel" alignment="CENTER_RIGHT" prefHeight="22.0" prefWidth="150.0" text="Part of Speech:" />
-                        <Label fx:id="partOfSpeechLabel" prefHeight="23.0" prefWidth="590.0" />
+                        <Label id="posLabel" fx:id="partOfSpeechLabel" prefHeight="23.0" prefWidth="590.0" />
                      </children>
                   </HBox>
                   <HBox fx:id="exampleHBox" spacing="20.0">
                      <children>
                         <Label id="detailTitleLabel" alignment="TOP_RIGHT" prefHeight="22.0" prefWidth="150.0" text="Example Usage:" />
-                        <Label id="exampleLabel" fx:id="exampleLabel" alignment="TOP_LEFT" prefHeight="141.0" prefWidth="590.0" wrapText="true">
+                        <Label id="exampleLabel" fx:id="exampleLabel" alignment="TOP_LEFT" prefHeight="141.0" prefWidth="590.0" stylesheets="@stylesheet.css" wrapText="true">
                            <padding>
                               <Insets top="1.0" />
                            </padding></Label>

@@ -1,6 +1,6 @@
 /**
- *  Tyler Zwiep
- *  200428335
+ * Tyler Zwiep
+ * 200428335
  */
 package Models;
 
@@ -15,9 +15,9 @@ public class WordInfo {
 
     private String partOfSpeech;
 
-    private String [] synonyms;
+    private String[] synonyms;
 
-    private String [] examples;
+    private String[] examples;
 
     public WordInfo(String definition, String partOfSpeech, String[] synonyms, String[] examples) {
         setDefinition(definition);
@@ -32,7 +32,7 @@ public class WordInfo {
     }
 
     public void setDefinition(String definition) {
-        if( (definition.length() > 0) && (definition.matches("^[A-z]*((-|\\s)*[A-z])*$")))
+        if ((definition.length() > 0) && (definition.matches("^[A-z]*((-|\\s)*[A-z])*$")))
             this.definition = definition;
         else
             throw new IllegalArgumentException("Definition should not be empty and must contain no special characters or numbers");
@@ -43,8 +43,8 @@ public class WordInfo {
     }
 
     public void setPartOfSpeech(String partOfSpeech) {
-        List<String> validPartsOfSpeech = Arrays.asList("NOUN","VERB","ADJECTIVE","ADVERB","PRONOUN","PREPOSITION",
-                "CONJUNCTION", "INTERJECTION","ARTICLE","DETERMINER");
+        List<String> validPartsOfSpeech = Arrays.asList("NOUN", "VERB", "ADJECTIVE", "ADVERB", "PRONOUN", "PREPOSITION",
+                "CONJUNCTION", "INTERJECTION", "ARTICLE", "DETERMINER");
         if (validPartsOfSpeech.contains(partOfSpeech.toUpperCase()))
             this.partOfSpeech = Character.toUpperCase(partOfSpeech.charAt(0)) + partOfSpeech.substring(1);
         else
@@ -58,7 +58,7 @@ public class WordInfo {
 
     public void setSynonyms(String[] synonyms) {
         ArrayList<String> validSynonyms = new ArrayList<>();
-        for(String synonym: synonyms) {
+        for (String synonym : synonyms) {
             if (synonym.matches("[A-Za-z'-]+"))
                 validSynonyms.add(synonym);
             else
@@ -76,7 +76,7 @@ public class WordInfo {
     public void setExamples(String[] examples) {
 
         ArrayList<String> validExamples = new ArrayList<>();
-        for(String example: examples) {
+        for (String example : examples) {
             if (example.matches("[A-Za-z'-]+"))
                 validExamples.add(example);
             else
@@ -86,15 +86,14 @@ public class WordInfo {
 
     }
 
-    public String toString(){
-        int maxLength= 100;
+    public String toString() {
+        int maxLength = 100;
         String definitionDisplay = "";
-        if(definition.length()> maxLength) {
+        if (definition.length() > maxLength) {
             definitionDisplay = definition.substring(0, maxLength) + "...";
-            return String.format("%s: %s", partOfSpeech,definitionDisplay);
-        }
-        else
-            return String.format("%s: %s", partOfSpeech,definition);
+            return String.format("%s: %s", partOfSpeech, definitionDisplay);
+        } else
+            return String.format("%s: %s", partOfSpeech, definition);
     }
 }
 

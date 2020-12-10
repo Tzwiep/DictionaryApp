@@ -7,23 +7,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rokkitt&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Slab&display=swap');
 
 .root {
-
     -fx-background-color:#385057 ;
-
-}
-.label{
-    -fx-text-fill: #f9e6bf;
-    -fx-font-size: 18px;
-    -fx-font-family: 'Josefin Slab';
-
 }
 
+/* ------------------------------ Search Page Styles ------------------------- */
 #titleLabel{
     -fx-font-size: 24px;
     -fx-text-fill: #f9e6bf;
-   -fx-font-family: 'Playfair Display', serif;
+    -fx-font-family: 'Playfair Display', serif;
 }
 
 #actionLabel{
@@ -37,15 +31,11 @@
     -fx-text-fill: red;
     -fx-font-family: 'Roboto';
 }
-#synHBox .label{
-    -fx-font-size: 14px;
-    -fx-text-fill: red;
-    -fx-font-family: 'Roboto';
-}
+
 
 .jfx-text-field {
     -fx-prompt-text-fill: #D6DAD2;
-   -fx-text-fill: #f9e6bf;
+    -fx-text-fill: #f9e6bf;
     -jfx-focus-color: #D6DAD2;
     -fx-font-family: 'Playfair Display', serif;
     -fx-font-size: 20px;
@@ -100,7 +90,18 @@
     -fx-background-radius: 8;
 }
 
+/* ------------------------------ Label Styles ------------------------- */
+#posLabel{
+    -fx-text-fill: #fff4dc;
+    -fx-font-size: 18px;
+    -fx-font-family: 'Josefin Slab', serif;
+}
 
+#foundDefinitionsLabel{
+    -fx-text-fill: #f9e6bf;
+    -fx-font-size: 18px;
+    -fx-font-family: 'Rokkitt', serif;
+}
 
 #wordSelectedLabel{
     -fx-font-size: 28px;
@@ -109,16 +110,16 @@
 }
 
 #definitionLabel{
-    -fx-font-size: 24px;
+    -fx-font-size: 26px;
     -fx-text-fill: #ffecc4;
-    -fx-font-family: 'Josefin Slab';
+    -fx-font-family: 'Josefin Slab', serif;
 
 }
 
 #pronunciationLabel{
     -fx-font-size: 24px;
     -fx-text-fill: #fff4dc;
-    -fx-font-family: 'Josefin Slab';
+    -fx-font-family: 'Josefin Slab', serif;
 }
 
 #detailTitleLabel{
@@ -128,18 +129,24 @@
 }
 
 #exampleLabel{
-    -fx-font-size: 16px;
+    -fx-font-size: 18px;
     -fx-text-fill: #fff4dc;
     -fx-font-style: italic;
-    -fx-font-family: 'Josefin Slab';
+    -fx-font-family: 'Josefin Slab', serif;
 
 }
 
 .hyperlink{
     -fx-text-fill: #B4E4D1;
-    -fx-font-size: 16px;
+    -fx-font-size: 18px;
     -fx-font-family: 'Rokkitt', serif;
 }
 .hyperlink:selected{
     -fx-text-fill:#B4E4D1;
+}
+
+#synHBox .label{
+    -fx-font-size: 14px;
+    -fx-text-fill: red;
+    -fx-font-family: 'Roboto';
 }

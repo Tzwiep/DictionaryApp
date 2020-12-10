@@ -1,6 +1,6 @@
 /**
- *  Tyler Zwiep
- *  200428335
+ * Tyler Zwiep
+ * 200428335
  */
 package Utilities;
 
@@ -17,8 +17,7 @@ import java.nio.file.Paths;
 
 public class WordsApiUtility {
 
-    public static void getWordFromApi(String searchText)
-    {
+    public static void getWordFromApi(String searchText) {
         // precaution to correct errors in overwriting file
         File file = new File("src/Utilities/words.json");
         if (file.exists())
